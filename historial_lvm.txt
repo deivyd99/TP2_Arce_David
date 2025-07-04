@@ -1,0 +1,66 @@
+    1  ssh-keygen -t ed25519
+    2  ll
+    3  cd .ssh/
+    4  ll
+    5  cat id_ed25519.pub 
+    6  cd ..
+    7  ll
+    8  mkdir repogit
+    9  ll
+   10  cd repogit/
+   11  git clone git@github.com:deivyd99/TP2_Arce_David.git
+   12  cd TP2_Arce_David/
+   13  sudo fdisk -l
+   14  fdisk /dev/sdd
+   15  sudo fdisk /dev/sdd
+   16  free
+   17  sudo fdisk -l
+   18  free
+   19  free -h
+   20  sudo mkswap /dev/sdd1
+   21  free -h
+   22  sudo mkswapon /dev/sdd1
+   23  sudo swapon /dev/sdd1
+   24  free -h
+   25  swapon -s
+   26  cat /proc/swaps
+   27  sudo fdisk /dev/sdc
+   28  sudo wipefs -a /dev/sdc1
+   29  sudo fdisk -l
+   30  sudo pvcreate /dev/sdd2 /dev/sdd3 /dev/sdd5 /dev/sdd6 /dev/sdc1 /dev/sdc2
+   31  sudo pvs
+   32  sudo vgcreate vg_datos /dev/sdc1 /dev/sdc2
+   33  vgs
+   34  sudo vgs
+   35  sudo pvs
+   36  sudo pvdisplay /dev/sdc2
+   37  sudo pvmove /dev/sdc2
+   38  sudo vgreduce vg_datos /dev/sdc2
+   39  sudo pvs
+   40  sudo vgcreate vg_datos /dev/sdd2
+   41  sudo vgextend vg_datos /dev/sdd2
+   42  sudo pvs
+   43  sudo vgcreate vg_web /dev/sdc2
+   44  sudo pvs
+   45  sudo lvcreate -L vg_web -n lv_web1
+   46  sudo lvcreate -L 1G vg_web -n lv_web1
+   47  sudo lvcreate -L 512M vg_web -n lv_web2
+   48  sudo lvcreate -L 512M vg_web -n lv_web3
+   49  sudo lvs
+   50  sudo pvs
+   51  sudo fdisk -l
+   52  sudo mkfs.ext4 /dev/mapper/vg_web-lv_web1
+   53  sudo mkfs.ext4 /dev/mapper/vg_web-lv_web2
+   54  sudo mkfs.ext4 /dev/mapper/vg_web-lv_web3
+   55  git config --global user.email "david-arce99@hotmail.com.ar"
+   56  git config --global user.name "deivyd99"
+   57  git add .
+   58  sudo pvs > pvs.txt
+   59  ll
+   60  sudo vgs > vgs.txt
+   61  sudo lvs > lvs.txt
+   62  ll
+   63  cat lvs.txt 
+   64  cat pvs.txt 
+   65  cat vgs.txt 
+   66  history > historial_lvm.txt
